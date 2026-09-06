@@ -1,0 +1,30 @@
+"""
+Multiplicacao de matrizes - versao SEQUENCIAL (sem threads, sem MPI)
+
+Uso:
+  python3 multiplicacaoMatriz.py 300
+"""
+
+import random
+import sys
+import time
+
+N = int(sys.argv[1]) if len(sys.argv) > 1 else 300
+
+random.seed(42)  # mesma semente das outras versoes
+A = [[random.random() for _ in range(N)] for _ in range(N)]
+B = [[random.random() for _ in range(N)] for _ in range(N)]
+C = [[0] * N for _ in range(N)]
+
+inicio = time.time()
+
+for i in range(N):
+    for j in range(N):
+        for k in range(N):
+            C[i][j] += A[i][k] * B[k][j]
+
+fim = time.time()
+
+print("N =", N)
+print("C[0][0] =", C[0][0])
+print("Tempo sequencial:", (fim - inicio) * 1000, "ms")
