@@ -1,0 +1,25 @@
+services:
+  master:
+    build: .
+    container_name: master
+    hostname: master
+    networks: [mpinet]
+  worker1:
+    build: .
+    container_name: worker1
+    hostname: worker1
+    networks: [mpinet]
+  worker2:
+    build: .
+    container_name: worker2
+    hostname: worker2
+    networks: [mpinet]
+  worker3:
+    build: .
+    container_name: worker3
+    hostname: worker3
+    networks: [mpinet]
+
+networks:
+  mpinet:
+    driver: bridge
